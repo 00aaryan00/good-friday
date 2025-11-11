@@ -70,7 +70,7 @@ export default function HeroNew() {
     // Movement animation for both parotta and shadow together (center of viewport)
     tl.to(parottaRef.current, {
       left: vw / 2,
-      top: vh / 2,
+      top: vh / 1.7,
       rotation: 360,
       scale: 1.5,
       duration: 2.5,
