@@ -128,10 +128,6 @@ export default function Showcase() {
 
     // Get banana's final position before transition
     if (bananaRef.current) {
-      const bananaRect = bananaRef.current.getBoundingClientRect();
-      const startX = bananaRect.left;
-      const startY = bananaRect.top;
-
       transitionTL
         .to(bananaRef.current, {
           scale: 0.8,
@@ -250,7 +246,7 @@ export default function Showcase() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isTransitioning, currentFlavor, isFlipping]);
+  }, [isTransitioning, currentFlavor, isFlipping, flipPacket]);
 
   // Function to get current flavor image (for future PNG changes)
   const getCurrentFlavorImage = () => {

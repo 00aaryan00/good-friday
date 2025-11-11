@@ -9,10 +9,9 @@ interface DecorationProps {
   type: DecorationType;
   color?: string;
   productSrc?: string;
-  index: number;
 }
 
-const Decoration = ({ type, color, productSrc, index }: DecorationProps) => {
+const Decoration = ({ type, color, productSrc }: DecorationProps) => {
   return (
     <div
       style={{
@@ -200,7 +199,6 @@ const RopeSection = () => {
                   type={item.type}
                   color={item.color}
                   productSrc={item.productSrc}
-                  index={index}
                 />
               ))}
               {/* Duplicate first set for seamless loop */}
@@ -210,7 +208,6 @@ const RopeSection = () => {
                   type={item.type}
                   color={item.color}
                   productSrc={item.productSrc}
-                  index={decorations.length + index}
                 />
               ))}
             </motion.div>

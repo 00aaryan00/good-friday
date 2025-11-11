@@ -22,6 +22,18 @@ export default function TraySection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
+    // Copy ref values to variables for cleanup
+    const question = questionRef.current;
+    const dots = dotsRef.current;
+    const leftEye = leftEyeRef.current;
+    const rightEye = rightEyeRef.current;
+    const smile = smileRef.current;
+    const leftTray = leftTrayRef.current;
+    const middleTray = middleTrayRef.current;
+    const rightTray = rightTrayRef.current;
+    const traysText = traysTextRef.current;
+    const content = contentRef.current;
+
     // Initial setup
     gsap.set(leftTrayRef.current, {
       x: '-100vw',
@@ -203,16 +215,16 @@ export default function TraySection() {
     return () => {
       ScrollTrigger.getAll().forEach(st => st.kill());
       gsap.killTweensOf([
-        questionRef.current,
-        dotsRef.current,
-        leftEyeRef.current,
-        rightEyeRef.current,
-        smileRef.current,
-        leftTrayRef.current,
-        middleTrayRef.current,
-        rightTrayRef.current,
-        traysTextRef.current,
-        contentRef.current
+        question,
+        dots,
+        leftEye,
+        rightEye,
+        smile,
+        leftTray,
+        middleTray,
+        rightTray,
+        traysText,
+        content
       ]);
     };
   }, []);

@@ -20,7 +20,7 @@ export const animateOnScroll = (camera: THREE.Camera) => {
       start: 'top top',
       end: 'bottom bottom',
       scrub: 1,
-      onUpdate: (self) => {
+      onUpdate: () => {
         camera.lookAt(0, 0, 0);
       },
     },
