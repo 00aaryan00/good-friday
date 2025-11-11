@@ -28,17 +28,21 @@ export default function HeroNew() {
   useEffect(() => {
     if (!parottaRef.current || !imageLoaded || !imageRef.current || !logoRef.current || !shadowRef.current || !textRef.current) return;
 
-    // Initial position and darkness
+    // Get viewport dimensions for consistent positioning
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    
+    // Initial position and darkness (off-screen top-left)
     gsap.set(parottaRef.current, {
-      x: '-100%',
-      y: '-100%',
+      left: -200,
+      top: -200,
       rotation: -45,
       scale: 1,
     });
 
     gsap.set(shadowRef.current, {
-      x: '-100%',
-      y: '-95%',
+      left: -200,
+      top: -180,
       rotation: -45,
       scale: 1,
       opacity: 1,
@@ -63,16 +67,26 @@ export default function HeroNew() {
     // Create timeline for coordinated animations
     const tl = gsap.timeline();
 
-    // Movement animation for both parotta and shadow together
-    tl.to([parottaRef.current, shadowRef.current], {
-      x: '212%',
-      y: (i) => i === 0 ? '130%' : '135%',
+    // Movement animation for both parotta and shadow together (center of viewport)
+    tl.to(parottaRef.current, {
+      left: vw / 2,
+      top: vh / 2,
       rotation: 360,
-      scale: 2,
+      scale: 1.5,
       duration: 2.5,
       ease: "power2.out",
       transformOrigin: "center center",
-    });
+    }, 0);
+    
+    tl.to(shadowRef.current, {
+      left: vw / 2,
+      top: vh / 2 + 20,
+      rotation: 360,
+      scale: 1.5,
+      duration: 2.5,
+      ease: "power2.out",
+      transformOrigin: "center center",
+    }, 0);
 
     // Simultaneous brightness animation
     tl.to(imageRef.current, {
